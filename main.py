@@ -1,9 +1,14 @@
 from fastapi import FastAPI, File, UploadFile
 import pandas as pd
-import shutil
 import re
+import shutil
 from openpyxl.styles import PatternFill
 from openpyxl import load_workbook
+import os  # Pour gérer les fichiers
+import uvicorn
+
+# Importer python-multipart pour la gestion des fichiers en multipart
+import multipart
 
 app = FastAPI()
 
