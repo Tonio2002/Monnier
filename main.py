@@ -62,9 +62,6 @@ for row in ws.iter_rows(min_row=2, max_row=ws.max_row, values_only=False):
                 cell_in_row.fill = fill  # Colorier toute la ligne en jaune
 
 # Sauvegarder le fichier avec la mise en forme
-wb.save(output_file_path)
-
-    
-    df.to_excel(output_file_path, index=False)
-
-    return {"download_url": "http://localhost:8000/download/RetailSales_Final.xlsx"}
+wb.save(output_file_path)   
+df.to_excel(output_file_path, index=False)
+    return {"download_url": "http://localhost:8000/download/RetailSales_Final.xlsx"}  # ✅ Doit être dans la fonction
