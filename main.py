@@ -46,11 +46,7 @@ async def format_excel(file: UploadFile = File(...)):
     # 📌 Étape 5 : Supprimer les parenthèses et leur contenu en colonne originale
     df["Retail Sales"] = df["Retail Sales"].str.replace(r"\s*\(.*?\)", "", regex=True)
 
-    # 📌 Étape 6 : Sauvegarde du fichier transformé
-    output_file_path = "/tmp/RetailSales_Final.xlsx"
-    df.to_excel(output_file_path, index=False)
-
-    # 📌 Étape 7 : Appliquer la mise en forme (colorier les lignes contenant "Total")
+    # 📌 Étape 6 : Appliquer la mise en forme (colorier les lignes contenant "Total")
     wb = load_workbook(output_file_path)
     ws = wb.active
     fill = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
@@ -61,6 +57,10 @@ async def format_excel(file: UploadFile = File(...)):
                 for cell_in_row in row:
                     cell_in_row.fill = fill  # Colorier toute la ligne en jaune
 
+   # 📌 Étape 7 : Sauvegarde du fichier transformé
+    output_file_path = "/tmp/RetailSales_Final.xlsx"
+    df.to_excel(output_file_path, index=False)
+  
     # 📌 Sauvegarder avec la mise en forme
     wb.save(output_file_path)
 
