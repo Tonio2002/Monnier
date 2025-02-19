@@ -14,6 +14,7 @@ app = FastAPI()
 
 @app.post("/format-excel/")
 async def format_excel(file: UploadFile = File(...)):
+    return {"message": "Fichier reçu"}
     # 📌 Sauvegarde temporaire du fichier
     file_location = f"/tmp/{file.filename}"
     with open(file_location, "wb") as buffer:
